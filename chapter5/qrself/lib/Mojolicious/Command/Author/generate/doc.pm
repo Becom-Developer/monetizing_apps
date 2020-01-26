@@ -1,6 +1,6 @@
 package Mojolicious::Command::Author::generate::doc;
 use Mojo::Base 'Mojolicious::Command';
-use Mojo::Util qw{class_to_file dumper};
+use Mojo::Util qw{class_to_file};
 
 has description => 'Generate create doc';
 has usage       => sub { shift->extract_usage };
@@ -14,10 +14,10 @@ sub run {
     die 'Can not get class name!' if $home->path('lib')->list->size ne 1;
     my $appclass = $home->path('lib')->list->first->basename('.pm');
     my $appname  = class_to_file $appclass;
+    my $args     = +{ app => $appname };
 
     # doc/deploy.md
     my $deploy_file = 'deploy.md';
-    my $args        = +{ app => $appname };
     $self->render_to_rel_file( 'deploy', "doc/$deploy_file", $args );
     return;
 }

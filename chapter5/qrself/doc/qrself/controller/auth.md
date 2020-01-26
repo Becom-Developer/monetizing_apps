@@ -1,6 +1,6 @@
 # NAME
 
- - 
+qrself/controller/auth - QRSelf
 
 # SYNOPSIS
 
@@ -23,7 +23,7 @@
 
 # SEE ALSO
 
-- `lib/` -
-- `lib/` -
-- `templates/` -
-- `t/` -
+- `lib/QRSelf/Controller/Auth.pm` -
+- `lib/QRSelf/Model/Auth.pm` -
+- `templates/auth/` -
+- `t/qrself/controller/auth.t` -

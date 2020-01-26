@@ -250,7 +250,6 @@ use Mojo::Base 'Mojolicious::Controller';
 1;
 
 @@ model_base
-% my $args = shift;
 package <%= $class %>;
 use Mojo::Base -base;
 use <%= $appname %>::DB;
@@ -264,7 +263,6 @@ has db => sub {
 1;
 
 @@ db_base
-% my $args = shift;
 package <%= $class %>;
 use Mojo::Base -base;
 
@@ -273,7 +271,6 @@ has [qw{conf}];
 1;
 
 @@ model_pm
-% my $args = shift;
 package <%= $class %>;
 use Mojo::Base '<%= $appname %>::Model::Base';
 
@@ -300,7 +297,6 @@ use Mojo::Base '<%= $appname %>::Model::Base';
 1;
 
 @@ db_pm
-% my $args = shift;
 package <%= $class %>;
 use Mojo::Base '<%= $appname %>::DB::Base';
 use <%= $appname %>::DB::Master;
@@ -310,7 +306,6 @@ has master => sub { <%= $appname %>::DB::Master->new(); };
 1;
 
 @@ master_pm
-% my $args = shift;
 package <%= $class %>;
 use Mojo::Base -base;
 
@@ -435,7 +430,6 @@ sub sort_to_hash {
 1;
 
 @@ util_pm
-% my $args = shift;
 package <%= $class %>;
 use Mojo::Base -base;
 use Time::Piece;
@@ -458,7 +452,6 @@ sub now_datetime {
 1;
 
 @@ test_mojo_role
-% my $args = shift;
 package <%= $class %>;
 use Mojo::Base -role;
 use Test::More;
@@ -493,7 +486,6 @@ CREATE TABLE user (
 );
 
 @@ controller
-% my $args = shift;
 package <%= $class %>;
 use Mojo::Base '<%= $appname %>::Controller::Base';
 
@@ -506,7 +498,6 @@ sub index {
 1;
 
 @@ test
-% my $args = shift;
 use Mojo::Base -strict;
 use Test::More;
 use Test::Mojo;
@@ -523,7 +514,6 @@ done_testing();
 %% title '';
 
 @@ model
-% my $args = shift;
 package <%= $class %>;
 use Mojo::Base '<%= $appname %>::Model::Base';
 
@@ -535,7 +525,6 @@ sub index {
 1;
 
 @@ doc
-% my $args = shift;
 # NAME
 
 <%= $name %> - <%= $appname %>

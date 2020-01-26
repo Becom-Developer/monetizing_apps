@@ -28,16 +28,21 @@ $ cd qrself
 (git設定)
 $ echo 'local/' >> .gitignore; echo 'log/' >> .gitignore; echo 'db/*.db' >> .gitignore; echo '.DS_Store' >> .gitignore;
 
-
 (mojo 拡張コマンド)
-$ git clone git@github.com:ykHakata/Mojolicious-Command-generate-doc.git
-$ git clone git@github.com:ykHakata/Mojolicious-Command-generate-mvc.git
-$ git clone git@github.com:ykHakata/Mojolicious-Command-generate-sqlitedb.git
-$ git clone git@github.com:ykHakata/Mojolicious-Command-generate-etc.git
-$ mv Mojolicious-Command-generate-doc/lib/* lib/
-$ mv Mojolicious-Command-generate-mvc/lib/Mojolicious/Command/generate/* lib/Mojolicious/Command/generate/
-$ mv Mojolicious-Command-generate-sqlitedb/lib/Mojolicious/Command/generate/* lib/Mojolicious/Command/generate/
-$ mv Mojolicious-Command-generate-etc/lib/Mojolicious/Command/generate/* lib/Mojolicious/Command/generate/
+$ git clone git@github.com:ykHakata/Mojolicious-Command-Author-generate-doc.git
+$ git clone git@github.com:ykHakata/Mojolicious-Command-Author-generate-mvc.git
+$ git clone git@github.com:ykHakata/Mojolicious-Command-Author-generate-sqlitedb.git
+$ git clone git@github.com:ykHakata/Mojolicious-Command-Author-generate-etc.git
+$ mv Mojolicious-Command-Author-generate-doc/lib/* lib/
+$ mv Mojolicious-Command-Author-generate-mvc/lib/Mojolicious/Command/Author/generate/* lib/Mojolicious/Command/Author/generate/
+$ mv Mojolicious-Command-Author-generate-sqlitedb/lib/Mojolicious/Command/Author/generate/* lib/Mojolicious/Command/Author/generate/
+$ mv Mojolicious-Command-Author-generate-etc/lib/Mojolicious/Command/Author/generate/* lib/Mojolicious/Command/Author/generate/
+
+(不要なファイルはゴミ箱に)
+mv Mojolicious-Command-Author-generate-doc ~/.Trash
+mv Mojolicious-Command-Author-generate-mvc ~/.Trash
+mv Mojolicious-Command-Author-generate-sqlitedb ~/.Trash
+mv Mojolicious-Command-Author-generate-etc ~/.Trash
 
 (１回目テンプレ自動作成)
 $ carton exec -- script/qrself generate mvc
