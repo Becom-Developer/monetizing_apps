@@ -56,6 +56,58 @@ $ carton exec -- prove --lib -r
 (開発用のテンプレ配置完成)
 ```
 
+- url
+    - GET - `/` - index サイトの説明、各機能へのリンク
+    - GET - `/qr/create` - create QRコードの条件を入力する画面
+    - GET - `/qr/:numbering/edit` - edit QRコードの条件を修正する画面
+    - POST - `/qr/:numbering/update` - update QRコードの条件の修正実行
+    - POST - `/qr` - store QRコードを作成実行
+    - GET - `/qr/:numbering` - show 作成されたQRコードを表示
+    - GET - `/qr/download` - download 作成されたQRコードのダウンロード実行
+
+```
+embed ads -> (ad)
+
+standard
++--------+  +-----------------+  +-----------+  +---------------------+  +-------------------+
+| get: / |->| get: /qr/create |->| post: /qr |->| get: /qr/:numbering |->| get: /qr/download |
++--------+  +-----------------+  +-----------+  +---------------------+  +-------------------+
+(ad)        (ad)                                (ad)
+
+update
++---------------------+  +--------------------------+  +-----------------------------+  +---------------------+
+| get: /qr/:numbering |->| get: /qr/:numbering/edit |->| post: /qr/:numbering/update |->| get: /qr/:numbering |
++---------------------+  +--------------------------+  +-----------------------------+  +---------------------+
+(ad)                     (ad)                                                           (ad)
+
+download only
++--------+  +-------------------+
+| get: / |->| get: /qr/download |
++--------+  +-------------------+
+(ad)
+
+show again
++--------+  +---------------------+
+| get: / |->| get: /qr/:numbering |
++--------+  +---------------------+
+(ad)        (ad)
+```
+
+```sql
+DROP TABLE IF EXISTS qr_card;
+CREATE TABLE qr_card (                                  -- 作成されたQRコードカード
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,  -- ID (例: 5)
+    numbering       TEXT,                               -- qr_card のユニークなナンバー (例: 'qr20200128')
+    name            TEXT,                               -- QRコードカードの名前 (例: '自分のサイトURL')
+    qrcode          TEXT,                               -- QRコード画像ファイル名 (例: 'qrcode.png')
+    content         TEXT,                               -- QRコードにしたい内容 (例: 'https://www.becom.co.jp')
+    option          TEXT,                               -- 変換する詳細設定json形式 (例: '{"option": {"size": "50"}}')
+    deleted         INTEGER,                            -- 削除フラグ (例: 0: 削除していない, 1: 削除済み)
+    created_ts      TEXT,                               -- 登録日時 (例: '2020-01-28 09:47:28')
+    modified_ts     TEXT                                -- 修正日時 (例: '2020-01-28 09:47:28')
+);
+```
+
 ## SECTION1
 
 ## SECTION2
